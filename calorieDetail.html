@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CalorieDetails</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">My Health</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="calorie.html">Calories</a></li>
+        </ul>
+      </nav>
+      <h1>Calorie Details</h1>
+    </header>
+    <main>
+      <section id="calorieDetail"></section>
+    </main>
+    <footer>&copy;2023 MyHealth App. All rights reserved.</footer>
+
+    <script>
+      let calorie = [
+        {
+          Id: "1",
+          Meal: "Breakfast",
+          Item: "Dosa",
+          Calories: "200 Cal",
+        },
+
+        {
+          Id: "2",
+          Meal: "Lnch",
+          Item: "Pals and rice",
+          Calories: "200 Cal",
+        },
+
+        {
+          Id: "3",
+          Meal: "Dinner",
+          Item: "Roti or sabji",
+          Calories: "300 Cal",
+        },
+      ];
+
+      // function getParameterById(id) {
+      //   let url = new URL(window.location.href);
+      //   return url.searchParams.get(id);
+      // }
+      // let calorieId = getParameterById("id");
+      // let caloriee;
+      // for (let i = 0; i < calorie.length; i++) {
+      //   if (calorie[i].id === calorieId) {
+      //     caloriee = calorie[i];
+      //   }
+      // }
+      // let calorieDetailElement = document.getElementById("calorieDetail");
+      // if (calorie) {
+      //   calorieDetailElement.innerHTML = `<h2>${calorie.Meal}</h2>
+      //     <u>
+      //        <li>Id: ${calorie.Id}</li>
+      //     <li>Meal: ${calorie.Meal}</li>
+      //     <li>Item: ${calorie.Item}</li>
+      //     <li>Calories: ${calorie.Calories}</li>
+      //     </ul
+      //  `;
+      // } else {
+      //   calorieDetailEleme.innerHTML = "Calories not found.";
+      // }
+
+      // get the id from the URL
+      // find that id in the database
+      // Display the details on the view.
+      function getParameterById(id) {
+        // console.log(window.location.href);
+        let url = new URL(window.location.href);
+
+        // console.log(typeof url);
+
+        return url.searchParams.get(id);
+      }
+
+      let caloriesid = getParameterById("id");
+      let calories;
+      for (let i = 0; i < calorie.length; i++) {
+        if (calorie[i].Id === caloriesid) {
+          calories = calorie[i];
+        }
+      }
+
+      if (calories) {
+        let caloriesDetailElement = document.getElementById("calorieDetail");
+        console.log(caloriesDetailElement);
+
+        caloriesDetailElement.innerHTML = `
+        <h2>${calories.Meal}</h2>
+        <ul>
+          <li>Meal: ${calories.Meal}</li>
+          <li>Item: ${calories.Item}</li>
+          <li>Calories: ${calories.Calories}</li>
+        </ul>
+        `;
+      }
+    </script>
+  </body>
+</html>
